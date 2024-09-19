@@ -15,4 +15,14 @@
         select * from member where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
     </select>
 
+    <!-- 회원목록 -->
+    <select id="findAll" resultType="member">
+        select * from member
+    </select>
+
+    <!-- 회원정보 조회 -->
+    <select id="findById" parameterType="Long" resultType="member">
+        select * from member where id = #{id}
+    </select>
+
 </mapper>

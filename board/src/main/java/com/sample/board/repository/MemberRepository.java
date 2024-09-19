@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {
@@ -19,6 +21,16 @@ public class MemberRepository {
     // 로그인
     public MemberDTO login(MemberDTO memberDTO) {
         return sql.selectOne("Member.login", memberDTO);
+    }
+
+    // 회원목록
+    public List<MemberDTO> findAll() {
+        return sql.selectList("Member.findAll");
+    }
+
+    // 회원정보 조회
+    public MemberDTO findById(Long id) {
+        return sql.selectOne("Member.findById", id);
     }
 
 }
