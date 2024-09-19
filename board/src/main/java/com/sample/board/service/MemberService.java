@@ -16,4 +16,15 @@ public class MemberService {
         return memberRepository.join(memberDTO);
     }
 
+    // 로그인
+    public boolean login(MemberDTO memberDTO) {
+        MemberDTO member = memberRepository.login(memberDTO);
+
+        if (member != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

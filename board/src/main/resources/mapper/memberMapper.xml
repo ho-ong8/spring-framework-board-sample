@@ -10,4 +10,9 @@
         values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberAge}, #{memberMobile})
     </insert>
 
+    <!-- 로그인 -->
+    <select id="login" parameterType="member" resultType="member">
+        select * from member where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
+    </select>
+
 </mapper>

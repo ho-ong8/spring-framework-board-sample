@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/member")
@@ -31,6 +33,31 @@ public class MemberController {
         } else {
             return "/member/join";
         }
+    }
+
+    // 로그인
+    @GetMapping("/login")
+    public String loginForm() {
+        return "/member/login";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+        boolean member = memberService.login(memberDTO);
+
+        if (member) {
+            session.setAttribute("member", memberDTO.getMemberEmail());
+            return "main";
+        } else {
+            return "index";
+        }
+    }
+
+    // 로그아웃
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
     }
 
 }

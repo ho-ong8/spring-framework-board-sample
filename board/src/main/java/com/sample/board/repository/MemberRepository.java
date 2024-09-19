@@ -13,8 +13,12 @@ public class MemberRepository {
 
     // 회원가입
     public int join(MemberDTO memberDTO) {
-        System.out.println("memberDTO = " + memberDTO);
         return sql.insert("Member.join", memberDTO);
+    }
+
+    // 로그인
+    public MemberDTO login(MemberDTO memberDTO) {
+        return sql.selectOne("Member.login", memberDTO);
     }
 
 }
