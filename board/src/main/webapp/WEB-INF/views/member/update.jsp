@@ -19,10 +19,10 @@
 </body>
 <script>
     const update = () => {
-        const pw = "${member.memberPassword}";
-        const inputPw = document.getElementById("memberPassword").value;
+        const password = "${member.memberPassword}";
+        const inputPassword = document.getElementById("memberPassword").value;
 
-        if (pw == inputPw) {
+        if (password == inputPassword) {
             document.updateForm.submit();
         } else {
             alert("비밀번호가 일치하지 않습니다.");

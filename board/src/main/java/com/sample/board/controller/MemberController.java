@@ -102,4 +102,10 @@ public class MemberController {
         }
     }
 
+    // 이메일 중복체크
+    @PostMapping("/check-email")
+    public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        return memberService.checkEmail(memberEmail);
+    }
+
 }

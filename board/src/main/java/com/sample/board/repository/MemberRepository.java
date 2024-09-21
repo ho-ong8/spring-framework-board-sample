@@ -39,8 +39,8 @@ public class MemberRepository {
     }
 
     // 회원정보 수정
-    public MemberDTO findByMemberEmail(String member) {
-        return sql.selectOne("Member.findByMemberEmail", member);
+    public MemberDTO findByMemberEmail(String memberEmail) {
+        return sql.selectOne("Member.findByMemberEmail", memberEmail);
     }
 
     public int update(MemberDTO memberDTO) {

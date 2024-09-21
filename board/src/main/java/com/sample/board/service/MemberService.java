@@ -45,10 +45,10 @@ public class MemberService {
     }
 
     // 회원정보 수정
-    public MemberDTO findByMemberEmail(String member) {
-        return memberRepository.findByMemberEmail(member);
+    public MemberDTO findByMemberEmail(String memberEmail) {
+        return memberRepository.findByMemberEmail(memberEmail);
     }
-    
+
     public boolean update(MemberDTO memberDTO) {
         int member = memberRepository.update(memberDTO);
 
@@ -56,6 +56,17 @@ public class MemberService {
             return true;
         } else {
             return false;
+        }
+    }
+
+    // 이메일 중복체크
+    public String checkEmail(String memberEmail) {
+        MemberDTO memberDTO = memberRepository.findByMemberEmail(memberEmail);
+
+        if (memberDTO == null) {
+            return "ok";
+        } else {
+            return "no";
         }
     }
 
