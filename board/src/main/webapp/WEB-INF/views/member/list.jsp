@@ -33,14 +33,14 @@
                     <a href="/member?id=${member.id}">조회</a>
                 </td>
                 <td>
-                    <button onclick="delete('${member.id}')">삭제</button>
+                    <button onclick="del('${member.id}')">삭제</button>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </body>
 <script>
-    const delete = () => {
+    const del = (id) => {
         location.href = "/member/delete?id=" + id;
     }
 </script>

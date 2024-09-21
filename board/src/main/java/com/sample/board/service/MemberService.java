@@ -39,4 +39,9 @@ public class MemberService {
         return memberRepository.findById(id);
     }
 
+    // 회원정보 삭제
+    public void delete(Long id) {
+        memberRepository.delete(id);
+    }
+
 }

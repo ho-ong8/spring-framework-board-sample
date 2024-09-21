@@ -33,4 +33,9 @@ public class MemberRepository {
         return sql.selectOne("Member.findById", id);
     }
 
+    // 회원정보 삭제
+    public void delete(Long id) {
+        sql.delete("Member.delete", id);
+    }
+
 }
