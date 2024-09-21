@@ -38,4 +38,13 @@ public class MemberRepository {
         sql.delete("Member.delete", id);
     }
 
+    // 회원정보 수정
+    public MemberDTO findByMemberEmail(String member) {
+        return sql.selectOne("Member.findByMemberEmail", member);
+    }
+
+    public int update(MemberDTO memberDTO) {
+        return sql.update("Member.update", memberDTO);
+    }
+
 }

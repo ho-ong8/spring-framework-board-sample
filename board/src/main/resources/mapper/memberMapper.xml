@@ -30,4 +30,14 @@
         delete from member where id = #{id}
     </delete>
 
+    <!-- 회원정보 수정 -->
+    <select id="findByMemberEmail" parameterType="String" resultType="member">
+        select * from member where memberEmail = #{loginEmail}
+    </select>
+
+    <update id="update" parameterType="member">
+        update member set memberName = #{memberName}, memberName = #{memberName}, memberAge = #{memberAge}, memberMobile = #{memberMobile}
+        where id = #{id}
+    </update>
+
 </mapper>
