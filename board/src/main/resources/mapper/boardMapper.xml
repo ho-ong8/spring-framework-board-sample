@@ -10,4 +10,18 @@
         values (#{boardWriter}, #{boardPassword}, #{boardTitle}, #{boardContents})
     </insert>
 
+    <!-- 게시글 목록 -->
+    <select id="findAll" resultType="board">
+        select * from board order by id desc
+    </select>
+
+    <!-- 게시글 조회 -->
+    <select id="findById" parameterType="Long" resultType="board">
+        select * from board where id = #{id}
+    </select>
+
+    <update id="updateHits" parameterType="Long">
+        update board set boardHits = boardHits + 1 where id = #{id}
+    </update>
+
 </mapper>
