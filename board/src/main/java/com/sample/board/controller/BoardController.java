@@ -50,4 +50,11 @@ public class BoardController {
         return "/board/detail";
     }
 
+    // 게시글 삭제
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long id) {
+        boardService.delete(id);
+        return "redirect:/board/";
+    }
+
 }

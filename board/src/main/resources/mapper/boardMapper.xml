@@ -24,4 +24,9 @@
         update board set boardHits = boardHits + 1 where id = #{id}
     </update>
 
+    <!-- 게시글 삭제 -->
+    <delete id="delete" parameterType="Long">
+        delete from board where id = #{id}
+    </delete>
+
 </mapper>
