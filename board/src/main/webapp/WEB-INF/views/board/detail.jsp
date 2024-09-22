@@ -33,13 +33,15 @@
             <td>${board.boardContents}</td>
         </tr>
     </table>
-    <button onclick="list()">목록</button>
-    <button onclick="update()">수정</button>
-    <button onclick="del()">삭제</button>
+    <button onclick="list()">글목록</button>
+    <button onclick="update()">글수정</button>
+    <button onclick="del()">글삭제</button>
 </body>
 <script>
     const list = () => {
-        location.href = "/board/";
+        // location.href = "/board/";
+        const page = "${page}"
+        location.href = "/board/paging?page=" + page;
     }
 
     const update = () => {

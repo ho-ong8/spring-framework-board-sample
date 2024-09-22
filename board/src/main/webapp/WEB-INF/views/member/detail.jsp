@@ -33,7 +33,7 @@
             <td>${member.memberMobile}</td>
         </tr>
     </table>
-    <button onclick="list()">목록</button>
+    <button onclick="list()">회원목록</button>
 </body>
 <script>
     const list = () => {

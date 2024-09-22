@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
@@ -40,6 +41,15 @@ public class BoardRepository {
     // 게시글 수정
     public void update(BoardDTO boardDTO) {
         sql.update("Board.update", boardDTO);
+    }
+
+    // 게시글 페이징
+    public List<BoardDTO> paging(Map<String, Integer> page) {
+        return sql.selectList("Board.paging", page);
+    }
+
+    public int count() {
+        return sql.selectOne("Board.count");
     }
 
 }

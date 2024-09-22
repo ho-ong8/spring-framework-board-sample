@@ -16,8 +16,8 @@
             <th>name</th>
             <th>age</th>
             <th>mobile</th>
-            <th>조회</th>
-            <th>삭제</th>
+            <th>detail</th>
+            <th>delete</th>
         </tr>
         <c:forEach items="${memberList}" var="member">
             <tr>
@@ -30,10 +30,10 @@
                 <td>${member.memberAge}</td>
                 <td>${member.memberMobile}</td>
                 <td>
-                    <a href="/member?id=${member.id}">조회</a>
+                    <a href="/member?id=${member.id}">회원조회</a>
                 </td>
                 <td>
-                    <button onclick="del('${member.id}')">삭제</button>
+                    <button onclick="del('${member.id}')">회원삭제</button>
                 </td>
             </tr>
         </c:forEach>

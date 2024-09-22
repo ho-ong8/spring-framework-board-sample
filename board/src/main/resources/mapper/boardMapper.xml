@@ -35,4 +35,13 @@
         where id = #{id}
     </update>
 
+    <!-- 게시글 페이징 -->
+    <select id="paging" parameterType="java.util.HashMap" resultType="board">
+        select * from board order by id desc limit #{start}, #{limit}
+    </select>
+
+    <select id="count" resultType="Integer">
+        select count(id) from board
+    </select>
+
 </mapper>

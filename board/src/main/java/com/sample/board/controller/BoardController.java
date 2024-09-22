@@ -1,6 +1,7 @@
 package com.sample.board.controller;
 
 import com.sample.board.dto.BoardDTO;
+import com.sample.board.dto.PageDTO;
 import com.sample.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,8 @@ public class BoardController {
         int board = boardService.write(boardDTO);
 
         if (board > 0) {
-            return "redirect:/board/";
+            // return "redirect:/board/";
+            return "redirect:/board/paging";
         } else {
             return "/board/write";
         }
@@ -43,10 +45,13 @@ public class BoardController {
 
     // 게시글 조회
     @GetMapping
-    public String findById(@RequestParam("id") Long id, Model model) {
+    public String findById(@RequestParam("id") Long id,
+                           @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                           Model model) {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        model.addAttribute("page", page);
         return "/board/detail";
     }
 
@@ -54,7 +59,8 @@ public class BoardController {
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
         boardService.delete(id);
-        return "redirect:/board/";
+        // return "redirect:/board/";
+        return "redirect:/board/paging";
     }
 
     // 게시글 수정
@@ -71,6 +77,17 @@ public class BoardController {
         BoardDTO board = boardService.findById(boardDTO.getId());
         model.addAttribute("board", board);
         return "/board/detail";
+    }
+
+    // 게시글 페이징
+    @GetMapping("/paging")
+    public String paging(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                         Model model) {
+        List<BoardDTO> boardDTOList = boardService.paging(page);
+        PageDTO pageDTO = boardService.pagingParam(page);
+        model.addAttribute("boardList", boardDTOList);
+        model.addAttribute("paging", pageDTO);
+        return "/board/paging";
     }
 
 }
