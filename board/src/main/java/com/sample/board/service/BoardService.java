@@ -37,4 +37,9 @@ public class BoardService {
         boardRepository.delete(id);
     }
 
+    // 게시글 수정
+    public void update(BoardDTO boardDTO) {
+        boardRepository.update(boardDTO);
+    }
+
 }

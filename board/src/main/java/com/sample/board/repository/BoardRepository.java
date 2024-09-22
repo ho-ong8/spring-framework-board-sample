@@ -37,4 +37,9 @@ public class BoardRepository {
         sql.delete("Board.delete", id);
     }
 
+    // 게시글 수정
+    public void update(BoardDTO boardDTO) {
+        sql.update("Board.update", boardDTO);
+    }
+
 }
