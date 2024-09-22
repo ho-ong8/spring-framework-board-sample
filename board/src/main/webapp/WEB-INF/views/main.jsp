@@ -9,15 +9,15 @@
 <body>
     <h1>Main</h1>
     <h2>안녕하세요! <span>${sessionScope.member}</span>님</h2>
-    <button onclick="update()">정보수정</button>
-    <button onclick="logout()">로그아웃</button>
+    <button onclick="updateFn()">정보수정</button>
+    <button onclick="logoutFn()">로그아웃</button>
 </body>
 <script>
-    const update = () => {
+    const updateFn = () => {
         location.href = "/member/update";
     }
 
-    const logout = () => {
+    const logoutFn = () => {
         location.href = "/member/logout";
     }
 </script>

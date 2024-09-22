@@ -13,11 +13,11 @@
         password: <input type="password" name="boardPassword" id="boardPassword" /><br>
         title: <input type="text" name="boardTitle" value="${board.boardTitle}" /><br>
         contents: <textarea name="boardContents" cols="30" rows="10">${board.boardContents}</textarea><br>
-        <input type="button" value="글수정" onclick="update()" />
+        <input type="button" value="글수정" onclick="updateFn()" />
     </form>
 </body>
 <script>
-    const update = () => {
+    const updateFn = () => {
         const password = "${board.boardPassword}";
         const inputPassword = document.getElementById("boardPassword").value;
 

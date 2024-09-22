@@ -16,8 +16,8 @@
             <th>name</th>
             <th>age</th>
             <th>mobile</th>
-            <th>detail</th>
-            <th>delete</th>
+            <th></th>
+            <th></th>
         </tr>
         <c:forEach items="${memberList}" var="member">
             <tr>
@@ -33,14 +33,14 @@
                     <a href="/member?id=${member.id}">회원조회</a>
                 </td>
                 <td>
-                    <button onclick="del('${member.id}')">회원삭제</button>
+                    <button onclick="deleteFn('${member.id}')">회원삭제</button>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </body>
 <script>
-    const del = (id) => {
+    const deleteFn = (id) => {
         location.href = "/member/delete?id=" + id;
     }
 </script>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Comment">
+
+    <!-- 댓글 작성 -->
+    <insert id="write" parameterType="comment">
+        insert into comment (commentWriter, commentContents, boardId)
+        values (#{commentWriter}, #{commentContents}, #{boardId})
+    </insert>
+
+    <!-- 댓글 목록 -->
+    <select id="findAll" parameterType="Long" resultType="comment">
+        select * from comment where boardId = #{boardId} order by id desc
+    </select>
+
+</mapper>

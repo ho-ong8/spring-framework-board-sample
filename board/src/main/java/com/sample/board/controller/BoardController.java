@@ -1,8 +1,10 @@
 package com.sample.board.controller;
 
 import com.sample.board.dto.BoardDTO;
+import com.sample.board.dto.CommentDTO;
 import com.sample.board.dto.PageDTO;
 import com.sample.board.service.BoardService;
+import com.sample.board.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final CommentService commentService;
 
     // 게시글 작성
     @GetMapping("/write")
@@ -28,7 +31,6 @@ public class BoardController {
         int board = boardService.write(boardDTO);
 
         if (board > 0) {
-            // return "redirect:/board/";
             return "redirect:/board/paging";
         } else {
             return "/board/write";
@@ -52,6 +54,10 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         model.addAttribute("page", page);
+
+        // 댓글 목록
+        List<CommentDTO> commentDTOList = commentService.findAll(id);
+        model.addAttribute("commentList", commentDTOList);
         return "/board/detail";
     }
 
@@ -59,7 +65,6 @@ public class BoardController {
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
         boardService.delete(id);
-        // return "redirect:/board/";
         return "redirect:/board/paging";
     }
 

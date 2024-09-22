@@ -33,10 +33,10 @@
             <td>${member.memberMobile}</td>
         </tr>
     </table>
-    <button onclick="list()">회원목록</button>
+    <button onclick="listFn()">회원목록</button>
 </body>
 <script>
-    const list = () => {
+    const listFn = () => {
         location.href = "/member/";
     }
 </script>

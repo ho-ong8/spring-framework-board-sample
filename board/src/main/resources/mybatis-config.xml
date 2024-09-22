@@ -7,6 +7,7 @@
     <typeAliases>
         <typeAlias type="com.sample.board.dto.MemberDTO" alias="member" />
         <typeAlias type="com.sample.board.dto.BoardDTO" alias="board" />
+        <typeAlias type="com.sample.board.dto.CommentDTO" alias="comment" />
     </typeAliases>
 
 </configuration>

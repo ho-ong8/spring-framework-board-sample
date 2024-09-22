@@ -8,17 +8,17 @@
 </head>
 <body>
     <form action="/member/update" method="post" name="updateForm">
-        id: <input type="text" name="id" value="${member.id}" readonly /><br>
+        <input type="hidden" name="id" value="${member.id}" readonly /><br>
         email: <input type="text" name="memberEmail" value="${member.memberEmail}" readonly /><br>
         password: <input type="password" name="memberPassword" id="memberPassword" /><br>
         name: <input type="text" name="memberName" value="${member.memberName}" /><br>
         age: <input type="text" name="memberAge" value="${member.memberAge}" /><br>
         mobile: <input type="text" name="memberMobile" value="${member.memberMobile}" /><br>
-        <input type="button" value="정보수정" onclick="update()" />
+        <input type="button" value="정보수정" onclick="updateFn()" />
     </form>
 </body>
 <script>
-    const update = () => {
+    const updateFn = () => {
         const password = "${member.memberPassword}";
         const inputPassword = document.getElementById("memberPassword").value;
 
