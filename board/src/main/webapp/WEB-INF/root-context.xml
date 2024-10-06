@@ -44,7 +44,7 @@
         <!-- 1024 * 1024 * 2 bytes 2MB -->
         <property name="maxUploadSizePerFile" value="2097152" />
         <property name="maxInMemorySize" value="10485756" />
-        <property name="uploadTempDir" value="file:/C:/ftmp" />
+        <property name="uploadTempDir" value="file:/C:/board_file/" />
     </bean>
 
 </beans>

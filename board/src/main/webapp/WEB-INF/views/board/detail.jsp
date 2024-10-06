@@ -1,16 +1,25 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detail</title>
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.0/reset.css">
+    <link rel="stylesheet" href="${path}/resources/css/style.css">
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <table>
+    <h1>Board</h1>
+    <h2>List</h2>
+    <table class="board-detail">
         <tr>
             <th>id</th>
             <td>${board.id}</td>
@@ -36,35 +45,38 @@
             <td>${board.boardContents}</td>
         </tr>
     </table>
-    <button onclick="listFn()">글목록</button>
-    <button onclick="updateFn()">글수정</button>
-    <button onclick="deleteFn()">글삭제</button>
+    <div class="btn-board-detail">
+        <button onclick="listFn()">글목록</button>
+        <button onclick="updateFn()">글수정</button>
+        <button onclick="deleteFn()">글삭제</button>
+    </div>
 
     <!-- 댓글 -->
-    <div>
-        <!-- 댓글 작성 -->
-        writer: <input type="text" id="commentWriter" placeholder="writer" /><br>
-        contents: <input type="text" id="commentContents" placeholder="contents" /><br>
+    <h3>Comment</h3>
+    <!-- 댓글 작성 -->
+    <div id="comment-write">
+        <input type="text" id="commentWriter" placeholder="writer" /><br>
+        <input type="text" id="commentContents" placeholder="contents" /><br>
         <button onclick="writeFn()">댓글작성</button>
-        <!-- 댓글 목록 -->
-        <div id="comment-list">
-            <table>
+    </div>
+    <!-- 댓글 목록 -->
+    <div id="comment-list">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>writer</th>
+                <th>contents</th>
+                <th>date</th>
+            </tr>
+            <c:forEach items="${commentList}" var="comment">
                 <tr>
-                    <th>id</th>
-                    <th>writer</th>
-                    <th>contents</th>
-                    <th>date</th>
+                    <td>${comment.id}</td>
+                    <td>${comment.commentWriter}</td>
+                    <td>${comment.commentContents}</td>
+                    <td>${comment.commentCreatedTime}</td>
                 </tr>
-                <c:forEach items="${commentList}" var="comment">
-                    <tr>
-                        <td>${comment.id}</td>
-                        <td>${comment.commentWriter}</td>
-                        <td>${comment.commentContents}</td>
-                        <td>${comment.commentCreatedTime}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
+            </c:forEach>
+        </table>
     </div>
 </body>
 <script>

@@ -77,10 +77,17 @@ public class BoardController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute BoardDTO boardDTO, Model model) {
+    public String update(@ModelAttribute BoardDTO boardDTO,
+                         @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                         Model model) {
         boardService.update(boardDTO);
         BoardDTO board = boardService.findById(boardDTO.getId());
         model.addAttribute("board", board);
+        model.addAttribute("page", page);
+
+        // 댓글 목록
+        List<CommentDTO> commentDTOList = commentService.findAll(boardDTO.getId());
+        model.addAttribute("commentList", commentDTOList);
         return "/board/detail";
     }
 
